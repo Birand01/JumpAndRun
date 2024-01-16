@@ -60,17 +60,17 @@
     <Compile Include="Assets\Scripts\DI\Injector.cs" />
     <Compile Include="Assets\Scripts\Interactions\Ground\Ground\GroundInteraction.cs" />
     <Compile Include="Assets\Scripts\Base\InteractionBase.cs" />
+    <Compile Include="Assets\Scripts\UI\Canvas\CanvasController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Obstacle\MoveLeft.cs" />
     <Compile Include="Assets\Scripts\GameEvents\GameEvents.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\GameEvents\StartGameEvent.cs" />
     <Compile Include="Assets\Scripts\Base\ButtonBase.cs" />
-    <Compile Include="Assets\Scripts\Background\RepeatBackground.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\JumpButtons\JumpButton.cs" />
     <Compile Include="Assets\Scripts\Interactions\Ground\Obstacle\ObstacleInteraction.cs" />
+    <Compile Include="Assets\Scripts\Background\RepeatBackground.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\CanvasManager.cs" />
-    <Compile Include="Assets\Scripts\UI\Canvas\CanvasController.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\JumpButtons\JumpButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art\TextMesh Pro\Shaders\TMPro.cginc" />
