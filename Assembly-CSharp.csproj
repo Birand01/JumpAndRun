@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Background\RepeatBackground.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\CanvasManager.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\JumpButtons\JumpButton.cs" />
+    <Compile Include="Assets\Scripts\Managers\Spawn\SpawnManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art\TextMesh Pro\Shaders\TMPro.cginc" />

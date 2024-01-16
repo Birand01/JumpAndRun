@@ -367,6 +367,7 @@
 "Assets/Scripts/GameEvents/StartGameEvent.cs"
 "Assets/Scripts/Interactions/Ground/Ground/GroundInteraction.cs"
 "Assets/Scripts/Interactions/Ground/Obstacle/ObstacleInteraction.cs"
+"Assets/Scripts/Managers/Spawn/SpawnManager.cs"
 "Assets/Scripts/Obstacle/MoveLeft.cs"
 "Assets/Scripts/Player/PlayerAnimation.cs"
 "Assets/Scripts/Player/PlayerController.cs"
