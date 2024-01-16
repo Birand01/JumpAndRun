@@ -5,8 +5,12 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
+
 public abstract class ButtonBase : MonoBehaviour
 {
+    [Inject] protected GroundInteraction groundInteraction;
+    [Inject] protected GameEvents gameEvents;
     private CompositeDisposable subscriptions = new CompositeDisposable();
     private Button button;
     protected int motionSign = 1;
@@ -46,16 +50,25 @@ public abstract class ButtonBase : MonoBehaviour
 
         this.UpdateAsObservable().Subscribe(x =>
         {
-
             ButtonInteractability();
+            OnMustButtonDisableEvents();
 
 
         })
             .AddTo(subscriptions);
     }
+
     protected virtual void ButtonInteractability() { }
     protected void IsButtonInteractable(bool state)
     {
         button.interactable = state;
+    }
+
+    private void OnMustButtonDisableEvents()
+    {
+        if (gameEvents.gameLost.Value || gameEvents.gameWon.Value)
+        {
+            IsButtonInteractable(false);
+        }
     }
 }

@@ -19,6 +19,7 @@ public class GameEvents : MonoBehaviour
 
     /// -------------------  GAME FAIL EVENTS ---------------------------
     public BoolReactiveProperty gameLost { get; set; } = new BoolReactiveProperty(false);
+    public static event Action OnGameLostEventsHandler;
     //--------------------------------------------------------------------------
 
 
@@ -40,22 +41,21 @@ public class GameEvents : MonoBehaviour
         this.UpdateAsObservable().Where(value => gameLost.Value == true)
             .Subscribe(value =>
             {
-                //StartCoroutine(OnPlayerFailUI?.Invoke(CanvasType.GameFailUI, true, canvasDelayTime));
+                OnGameLostEventsHandler?.Invoke();
             })
             .AddTo(subscriptions);
         this.UpdateAsObservable().Where(value => gameWon.Value == true)
             .Subscribe(value =>
             {
 
-                //StartCoroutine(OnPlayerSuccessUI?.Invoke(CanvasType.NextLevelUI, true, canvasDelayTime));
+               
             })
             .AddTo(subscriptions);
         this.UpdateAsObservable().Where(value => gameWon.Value == true || gameLost.Value == true)
            .Subscribe(value =>
            {
-               OnStartGameEvent?.Invoke(false);
-               //OnInitializePlayerVelocityEvent?.Invoke();
-               // OnDisablePlayerEvent?.Invoke();
+              
+              
            })
            .AddTo(subscriptions);
     }

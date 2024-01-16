@@ -6,7 +6,7 @@ using Zenject;
 
 public class JumpButton : ButtonBase
 {
-    [Inject] GroundInteraction groundInteraction; 
+   
     public static event Action OnPlayerJumpEvent;
     public static Action OnMoveBackGroundEvent;
     protected override void OnButtonEventHandler()
@@ -16,7 +16,8 @@ public class JumpButton : ButtonBase
 
     protected override void ButtonInteractability()
     {
-        if(groundInteraction.isGrounded)
+        base.ButtonInteractability();
+        if(groundInteraction.isGrounded && gameEvents.gameStarted.Value)
         {
             IsButtonInteractable(true);
         }

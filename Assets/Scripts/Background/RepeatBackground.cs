@@ -17,14 +17,17 @@ public class RepeatBackground : MonoBehaviour
     }
     private void OnEnable()
     {
-        GameEvents.OnStartGameEvent += BackgroundMovement;
+        GameEvents.OnGameLostEventsHandler += BackgroundMovementStopEvent;
+        GameEvents.OnStartGameEvent += BackgroundMovementEvent;
        
     }
     private void OnDisable()
     {
-        GameEvents.OnStartGameEvent -= BackgroundMovement;
+        GameEvents.OnStartGameEvent -= BackgroundMovementEvent;
+        GameEvents.OnGameLostEventsHandler -= BackgroundMovementStopEvent;
+
     }
-    private void BackgroundMovement(bool state)
+    private void BackgroundMovementEvent(bool state)
     {
         if (state)
         {
@@ -37,5 +40,9 @@ public class RepeatBackground : MonoBehaviour
         else
             return;
        
+    }
+    private void BackgroundMovementStopEvent()
+    {
+        moveLeftSpeed = 0;
     }
 }

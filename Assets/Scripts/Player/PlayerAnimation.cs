@@ -7,6 +7,7 @@ public class PlayerAnimation : MonoBehaviour
     private Animator animator;
     private void OnEnable()
     {
+        GameEvents.OnGameLostEventsHandler += DieAnimation;
         JumpButton.OnPlayerJumpEvent += JumpAnimation;
         GameEvents.OnStartGameEvent += StartRunAnimation;
     }
@@ -14,7 +15,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         GameEvents.OnStartGameEvent -= StartRunAnimation;
         JumpButton.OnPlayerJumpEvent -= JumpAnimation;
-
+        GameEvents.OnGameLostEventsHandler -= DieAnimation;
     }
     private void Awake()
     {
@@ -34,5 +35,10 @@ public class PlayerAnimation : MonoBehaviour
     private void JumpAnimation()
     {
         animator.SetTrigger("Jump_trig");
+    }
+    private void DieAnimation()
+    {
+        animator.SetBool("Death_b", true);
+        animator.SetInteger("DeathType_int", 1);
     }
 }
