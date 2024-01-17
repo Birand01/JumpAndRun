@@ -6,9 +6,9 @@ using Zenject;
 
 public class ObstacleInteraction : InteractionBase
 {
-    [Inject] GameEvents gameEvents;
+    public static event Action<bool> OnGameOverEvent;
     protected override void OnTriggerEnterAction(Collider other)
     {
-       gameEvents.gameLost.SetValueAndForceNotify(true);
+        OnGameOverEvent?.Invoke(true);
     }
 }

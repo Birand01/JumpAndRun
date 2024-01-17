@@ -21,12 +21,13 @@ public class CanvasManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        GameEvents.OnSwitchFailUI += SwitchCanvas;
         GameEvents.OnSwitchGameUI += SwitchCanvas;
     }
     private void OnDisable()
     {
         GameEvents.OnSwitchGameUI -= SwitchCanvas;
-
+        GameEvents.OnSwitchFailUI -= SwitchCanvas;
     }
     private void SwitchCanvas(CanvasType canvasType)
     {

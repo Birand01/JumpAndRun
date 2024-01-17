@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using Zenject.Asteroids;
 
 public class StartGameEvent : MonoBehaviour
 {
-    [Inject] GameEvents gameEvents;
+    public static event Action<bool> OnStartGameNotify;
     public void GameStart()
     {
-        gameEvents.gameStarted.SetValueAndForceNotify(true);
+        OnStartGameNotify?.Invoke(true);
+        //gameEvents.gameStarted.SetValueAndForceNotify(true);
+        //Debug.Log(gameEvents.gameStarted.Value);
     }
 }

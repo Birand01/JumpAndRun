@@ -10,10 +10,7 @@ public abstract class InteractionBase : MonoBehaviour
     protected Collider _collider = null;
 
     protected virtual void OnTriggerStayAction(Collider other) { }
-    protected virtual void OnTriggerEnterAction(Collider other)
-    {
-
-    }
+    protected virtual void OnTriggerEnterAction(Collider other){}
     protected virtual void OnTriggerExitAction(Collider other) { }
     protected virtual void OnCollisionEnterAction(Collision collision) { }
 
@@ -27,6 +24,7 @@ public abstract class InteractionBase : MonoBehaviour
         _collider.isTrigger = true;
 
     }
+   
     protected virtual void Start()
     {
         OnTriggerEnterSubscription();

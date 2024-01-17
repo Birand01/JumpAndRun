@@ -4,6 +4,7 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 using System;
+using Unity.VisualScripting;
 
 public class GameEvents : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class GameEvents : MonoBehaviour
     // ------------------------ GAME START EVENTS ----------------------------------------
     public BoolReactiveProperty gameStarted { get; set; } = new BoolReactiveProperty(false);
     public static event Action<bool> OnStartGameEvent; 
-    public static event Action<CanvasType> OnSwitchGameUI;  
+    public static event Action<CanvasType> OnSwitchGameUI;
     // ------------------------------------------------------------------
   
 
@@ -21,6 +22,7 @@ public class GameEvents : MonoBehaviour
     /// -------------------  GAME FAIL EVENTS ---------------------------
     public BoolReactiveProperty gameLost { get; set; } = new BoolReactiveProperty(false);
     public static event Action OnGameLostEventsHandler;
+    public static event Action<CanvasType> OnSwitchFailUI;
     //--------------------------------------------------------------------------
 
 
@@ -29,6 +31,16 @@ public class GameEvents : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(Subscribe());
+        ObstacleInteraction.OnGameOverEvent += OnGameOverEventTrigger;
+        //StartGameEvent.OnStartGameNotify += OnGameStartTrigger;
+        StartGameButton.OnSpawnObstacle += OnGameStartTrigger;
+    }
+    private void OnDisable()
+    {
+        subscriptions.Clear();
+        ObstacleInteraction.OnGameOverEvent -= OnGameOverEventTrigger;
+        //StartGameEvent.OnStartGameNotify -= OnGameStartTrigger;
+        StartGameButton.OnSpawnObstacle -= OnGameStartTrigger;
     }
     private IEnumerator Subscribe()
     {
@@ -36,6 +48,7 @@ public class GameEvents : MonoBehaviour
         this.UpdateAsObservable().Where(value => gameStarted.Value == true)
            .Subscribe(value =>
            {
+              
                OnSwitchGameUI?.Invoke(CanvasType.GameUI);
                OnStartGameEvent?.Invoke(true);
            })
@@ -44,6 +57,7 @@ public class GameEvents : MonoBehaviour
             .Subscribe(value =>
             {
                 OnGameLostEventsHandler?.Invoke();
+                OnSwitchFailUI?.Invoke(CanvasType.GameLostUI);
             })
             .AddTo(subscriptions);
         this.UpdateAsObservable().Where(value => gameWon.Value == true)
@@ -56,13 +70,20 @@ public class GameEvents : MonoBehaviour
         this.UpdateAsObservable().Where(value => gameWon.Value == true || gameLost.Value == true)
            .Subscribe(value =>
            {
-              
-              
+
            })
            .AddTo(subscriptions);
     }
-    private void OnDisable()
+  
+
+    private void OnGameOverEventTrigger(bool state)
     {
-        subscriptions.Clear();
+        gameLost.Value = state;
+      
+    }
+    private void OnGameStartTrigger(bool state)
+    {
+        gameStarted.Value = state;
+        Debug.Log(gameStarted.Value);
     }
 }
