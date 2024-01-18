@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundInteraction : InteractionBase
 {
-    internal bool isGrounded;
+    [SerializeField] internal bool isGrounded;
     protected override void Awake()
     {
         base.Awake();

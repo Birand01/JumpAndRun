@@ -9,5 +9,6 @@ public class Injector : MonoInstaller
     {
         Container.Bind<GroundInteraction>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<GameEvents>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<DistanceManager>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 }

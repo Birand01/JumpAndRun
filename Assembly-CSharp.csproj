@@ -56,9 +56,13 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Managers\SceneManagement.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\Level\RestartLevelButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\ShootButton\ShootButton.cs" />
     <Compile Include="Assets\Scripts\DI\Injector.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\Level\StartGameButton.cs" />
     <Compile Include="Assets\Scripts\Interactions\Ground\Ground\GroundInteraction.cs" />
+    <Compile Include="Assets\Scripts\Base\LevelButtonBase.cs" />
     <Compile Include="Assets\Scripts\Base\InteractionBase.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\CanvasController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
@@ -72,10 +76,7 @@
     <Compile Include="Assets\Scripts\Background\RepeatBackground.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\CanvasManager.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\JumpButtons\JumpButton.cs" />
-    <Compile Include="Assets\Scripts\Managers\SceneManagement.cs" />
-    <Compile Include="Assets\Scripts\Base\LevelButtonBase.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\Level\RestartLevelButton.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\Level\StartGameButton.cs" />
+    <Compile Include="Assets\Scripts\Managers\DistanceManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art\TextMesh Pro\Shaders\TMPro.cginc" />

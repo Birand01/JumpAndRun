@@ -70,7 +70,7 @@ public class GameEvents : MonoBehaviour
         this.UpdateAsObservable().Where(value => gameWon.Value == true || gameLost.Value == true)
            .Subscribe(value =>
            {
-
+               OnStartGameEvent?.Invoke(false);
            })
            .AddTo(subscriptions);
     }

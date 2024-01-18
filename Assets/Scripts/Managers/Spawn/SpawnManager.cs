@@ -19,14 +19,14 @@ public class SpawnManager : MonoBehaviour
     }
     private void Start()
     {
-        StartGameButton.OnSpawnObstacle += A;
+        StartGameButton.OnSpawnObstacle += SpawnObstacle;
 
     }
     private void OnDisable()
     {
-        StartGameButton.OnSpawnObstacle -= A;
+        StartGameButton.OnSpawnObstacle -= SpawnObstacle;
     }
-    private void A(bool state)
+    private void SpawnObstacle(bool state)
     {
         StartCoroutine(SpawnObstacleCoroutine(state));
     }
