@@ -77,6 +77,11 @@
     <Compile Include="Assets\Scripts\UI\Canvas\CanvasManager.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\JumpButtons\JumpButton.cs" />
     <Compile Include="Assets\Scripts\Managers\DistanceManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\Audio\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\SO\AudioSO\AudioSO.cs" />
+    <Compile Include="Assets\Scripts\Managers\Particle\ParticleManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\Particle\ParticleConfig.cs" />
+    <Compile Include="Assets\Scripts\SO\ParticleSO\ParticleSO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -814,6 +819,15 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder.Base">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

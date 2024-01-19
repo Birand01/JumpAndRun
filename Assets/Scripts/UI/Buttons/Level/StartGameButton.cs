@@ -10,6 +10,7 @@ public class StartGameButton : LevelButtonBase
     public static event Action<bool> OnSpawnObstacle;
     protected override void OnButtonClickEvent()
     {
+        base.OnButtonClickEvent();
        OnSpawnObstacle?.Invoke(true);
       // StartCoroutine(OnSpawnObstacleCoroutine?.Invoke(true));
     }

@@ -8,6 +8,7 @@ public class RestartLevelButton : LevelButtonBase
     public static event Action OnLevelStartButton;
     protected override void OnButtonClickEvent()
     {
+        base.OnButtonClickEvent();
         OnLevelStartButton?.Invoke();
     }
 }

@@ -31,15 +31,13 @@ public class GameEvents : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(Subscribe());
-        ObstacleInteraction.OnGameOverEvent += OnGameOverEventTrigger;
-        //StartGameEvent.OnStartGameNotify += OnGameStartTrigger;
+        ObstacleInteraction.OnGameOverEvent += OnGameOverEventTrigger;     
         StartGameButton.OnSpawnObstacle += OnGameStartTrigger;
     }
     private void OnDisable()
     {
         subscriptions.Clear();
         ObstacleInteraction.OnGameOverEvent -= OnGameOverEventTrigger;
-        //StartGameEvent.OnStartGameNotify -= OnGameStartTrigger;
         StartGameButton.OnSpawnObstacle -= OnGameStartTrigger;
     }
     private IEnumerator Subscribe()

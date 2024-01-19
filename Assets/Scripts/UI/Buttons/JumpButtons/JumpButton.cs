@@ -6,11 +6,12 @@ using Zenject;
 
 public class JumpButton : ButtonBase
 {
-   
+    public static event Action<SoundType, bool> OnJumpSound;
     public static event Action OnPlayerJumpEvent;
     public static Action OnMoveBackGroundEvent;
     protected override void OnButtonEventHandler()
     {
+        OnJumpSound?.Invoke(SoundType.JumpSound, true);
         OnPlayerJumpEvent?.Invoke();
     }
 

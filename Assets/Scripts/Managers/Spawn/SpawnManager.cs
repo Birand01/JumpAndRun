@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
     private int totalNumberOfObject;
     private Vector3 spawnPos=new Vector3(0, -2.712801f, -4.554195f);
     [Header("Spawn Attributes")]
-    [SerializeField] private float repeatRate, spawnDelay;
+    [SerializeField] private float spawnDelay;
    
     private void OnEnable()
     {
@@ -20,11 +20,13 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         StartGameButton.OnSpawnObstacle += SpawnObstacle;
-
+        DistanceManager.OnDecreaseSpawnObstacleDelay += DecreaseSpawnDelay;
     }
     private void OnDisable()
     {
         StartGameButton.OnSpawnObstacle -= SpawnObstacle;
+        DistanceManager.OnDecreaseSpawnObstacleDelay -= DecreaseSpawnDelay;
+
     }
     private void SpawnObstacle(bool state)
     {
@@ -42,10 +44,16 @@ public class SpawnManager : MonoBehaviour
                 StopCoroutine(SpawnObstacleCoroutine(!state));
                 yield break;
             }
+           
             yield return new WaitForSeconds(spawnDelay);
 
         }
 
+    }
+    private void DecreaseSpawnDelay(float delay)
+    {
+        spawnDelay-=delay;
+        spawnDelay = Mathf.Clamp(spawnDelay, 1.5f, 3f);
     }
 
   

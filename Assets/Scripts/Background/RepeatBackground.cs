@@ -9,14 +9,16 @@ public class RepeatBackground : MonoBehaviour
 {
     private Vector3 startPos;
     private float repepatWidth;
-    [SerializeField] private float moveLeftSpeed;
+    private float moveSpeed;
     private void Awake()
     {
+        moveSpeed = 15f;
         startPos = transform.position;
         repepatWidth = GetComponent<BoxCollider>().size.x / 2;
     }
     private void OnEnable()
     {
+        DistanceManager.OnIncreaseGeneralGameSpeed += BackgroundSpeedIncrementer;
         GameEvents.OnGameLostEventsHandler += BackgroundMovementStopEvent;
         GameEvents.OnStartGameEvent += BackgroundMovementEvent;
        
@@ -25,13 +27,14 @@ public class RepeatBackground : MonoBehaviour
     {
         GameEvents.OnStartGameEvent -= BackgroundMovementEvent;
         GameEvents.OnGameLostEventsHandler -= BackgroundMovementStopEvent;
+        DistanceManager.OnIncreaseGeneralGameSpeed -= BackgroundSpeedIncrementer;
 
     }
     private void BackgroundMovementEvent(bool state)
     {
         if (state)
         {
-            transform.Translate(Vector3.left * Time.deltaTime * moveLeftSpeed);
+            transform.Translate(Vector3.left * Time.deltaTime * moveSpeed);
             if (transform.position.x < startPos.x - repepatWidth)
             {
                 transform.position = startPos;
@@ -43,6 +46,11 @@ public class RepeatBackground : MonoBehaviour
     }
     private void BackgroundMovementStopEvent()
     {
-        moveLeftSpeed = 0;
+        moveSpeed = 0;
+    }
+
+    private void BackgroundSpeedIncrementer(float coefficient)
+    {
+        moveSpeed += coefficient;
     }
 }

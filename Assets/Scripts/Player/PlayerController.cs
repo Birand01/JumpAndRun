@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        Physics.gravity *= gravitiyModifier;
+        //Physics.gravity *= gravitiyModifier;
     }
 
 
@@ -37,6 +37,6 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerJumpEvent()
     {
-        _rb.DOJump(new Vector3(this.transform.position.x,1,this.transform.position.z),1,1, easeMotionResponse).SetEase(easeType);
+        _rb.DOJump(new Vector3(this.transform.position.x,0.6f,this.transform.position.z),1,1, easeMotionResponse).SetEase(easeType);
     }
 }

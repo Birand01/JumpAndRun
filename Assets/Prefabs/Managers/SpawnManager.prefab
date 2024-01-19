@@ -48,5 +48,7 @@ MonoBehaviour:
   - {fileID: 6926344408699581109, guid: 399187d120b3b794da4f8d85abb29c4a, type: 3}
   - {fileID: 146763986122668012, guid: 319aed0687abb6b4094554a32b524e27, type: 3}
   - {fileID: 3128014357176399195, guid: a958a1374c3cdc34395ad1081abf2e7b, type: 3}
-  repeatRate: 5
-  spawnDelay: 5
+  - {fileID: 1055209682040528715, guid: 286b88cdae1ed1b4a9d1fcec89e6a9cb, type: 3}
+  - {fileID: 7670262161640338639, guid: 853ccf8dc07e3b84aa3fc83f97b8ca7c, type: 3}
+  repeatRate: 1
+  spawnDelay: 3

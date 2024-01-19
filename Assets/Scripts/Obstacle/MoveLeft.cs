@@ -7,17 +7,23 @@ using UnityEngine;
 public class MoveLeft : MonoBehaviour
 {
 
-    [SerializeField] private float moveSpeed;
+    private float moveSpeed;
+    private void Awake()
+    {
+        moveSpeed = 15f;
+    }
     protected virtual void OnEnable()
     {
         GameEvents.OnStartGameEvent += ObstacleMovement;
         GameEvents.OnGameLostEventsHandler += OnStopObstacleMovement;
-      
+        DistanceManager.OnIncreaseGeneralGameSpeed += IncreaseObstacleSpeedEvent;
     }
     private void OnDisable()
     {
         GameEvents.OnGameLostEventsHandler -= OnStopObstacleMovement;
         GameEvents.OnStartGameEvent -= ObstacleMovement;
+        DistanceManager.OnIncreaseGeneralGameSpeed -= IncreaseObstacleSpeedEvent;
+
     }
 
     private void ObstacleMovement(bool state)
@@ -34,5 +40,9 @@ public class MoveLeft : MonoBehaviour
     private void OnStopObstacleMovement()
     {
         moveSpeed = 0;  
+    }
+    private void IncreaseObstacleSpeedEvent(float coefficient)
+    {
+        moveSpeed += coefficient;
     }
 }
